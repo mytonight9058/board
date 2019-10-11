@@ -74,6 +74,9 @@
 </head>
 <body>
 
+git test 수정
+
+
 <form action="join.do" method="post">
 		<fieldset>
 			<legend>회원 가입</legend>

@@ -71,7 +71,29 @@ public class ProjectDao {
 		return null;
 	}
 	
-	
+	public List<Project> selectBy(Connection conn){
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				Project project = new Project();
+				
+				return project;
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(pstmt);
+		}
+		
+		return null;
+	}
 	
 	
 	

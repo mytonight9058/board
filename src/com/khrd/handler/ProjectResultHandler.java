@@ -7,34 +7,36 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.khrd.controller.CommandHandler;
 import com.khrd.dao.ProjectDao;
+import com.khrd.dto.Project;
 import com.khrd.jbdc.ConnectionProvider;
 import com.khrd.jbdc.JDBCUtil;
 
-public class ProjectDeleteHandler implements CommandHandler {
+public class ProjectResultHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		Connection conn = null;
-
-		String no = request.getParameter("no");		
-		int No = Integer.parseInt(no);
-		
-		try {		
+		String No = request.getParameter("no");
+		int no = Integer.parseInt(No);
+	
+	Connection conn = null;
+	
+		try {
 			conn = ConnectionProvider.getConnection();
-			conn.setAutoCommit(false);
-			ProjectDao dao  = ProjectDao.getInstance();	
-			dao.delete(conn, No);
-			conn.commit();
+			ProjectDao dao = ProjectDao.getInstance();
+			Project project = dao.selectBy(conn, no);
+		
+			request.setAttribute("project", project);
 			
-			return "list.do";
-			
+			return "/WEB-INF/view/projectResult.jsp";
 		}catch(Exception e) {
 			e.printStackTrace();
 			
 		}finally {
 			JDBCUtil.close(conn);
-		}	
-		return null;
+		}
+	
+	
+	return null;
 	}
+
 }

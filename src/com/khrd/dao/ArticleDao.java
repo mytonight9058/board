@@ -159,12 +159,7 @@ public class ArticleDao {
 		}
 		return -1;
 	}
-	
-	
-	
-	
-	
-	
+
 	public int delete(Connection conn, int article_no) {
 		
 		PreparedStatement pstmt = null;

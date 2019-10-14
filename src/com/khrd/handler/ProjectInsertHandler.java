@@ -20,11 +20,15 @@ public class ProjectInsertHandler implements CommandHandler {
 		if(request.getMethod().equalsIgnoreCase("get")) {
 			
 			return "/WEB-INF/view/projectInsert.jsp";
+			
 		}else if(request.getMethod().equalsIgnoreCase("post")) {
+			
 			
 			String name = request.getParameter("name");
 			String content = request.getParameter("content");
 			String proceeding = request.getParameter("proceeding");
+			String sdate = request.getParameter("sdate");
+			String ldate = request.getParameter("ldate");
 
 			Connection conn = null;
 			
@@ -32,15 +36,14 @@ public class ProjectInsertHandler implements CommandHandler {
 				conn = ConnectionProvider.getConnection();
 				conn.setAutoCommit(false);
 				ProjectDao dao = ProjectDao.getInstance();			
-				Project project = new Project(0, name, content, null, null, proceeding);	
+				Project project = new Project(0, name, content, sdate, ldate, proceeding);	
 				dao.insert(conn,project);
 				conn.commit();
-				response.sendRedirect(request.getContextPath()+ "/project/list.do");				
-				return null;
+//				response.sendRedirect(request.getContextPath()+ "/project/list.do");				
+				return "/project/list.do";
 				
 			}catch(Exception e) {
 				e.printStackTrace();
-				conn.rollback();
 			}finally {
 				JDBCUtil.close(conn);
 			}

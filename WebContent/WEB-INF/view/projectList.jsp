@@ -28,37 +28,22 @@ table{
 <table>
 
 	<tr>
-		<td>프로젝트 이름</td>
-		
-		<c:forEach var = "project" items = "${list}">
-		<td>${project.name }</td>
-		</c:forEach>
-		
-	</tr>
-	
-	<tr>
+		<td>프로젝트 이름</td>		
 		<td>시작 날짜</td>
-		
-		<c:forEach var = "project" items = "${list}">
-		<td>${project.sdate }</td>
-		</c:forEach>
-	</tr>
-	
-	<tr>
 		<td>종료 날짜</td>
-		
-		<c:forEach var = "project" items = "${list}">
-		<td>${project.ldate }</td>
-		</c:forEach>
-	</tr>
-	
-	<tr>	
 		<td>상태</td>
-		
-		<c:forEach var = "project" items = "${list}">
-		<td>${project.proceeding }</td>
-		</c:forEach>
 	</tr>
+
+		<c:forEach var = "project" items = "${list}">
+	<tr>
+
+		<td><a href= "result.do?no=${project.no }">${project.name }</a></td>
+		<td>${project.sdate }</td>
+		<td>${project.ldate }</td>
+		<td>${project.proceeding }</td>
+		
+	</tr>
+		</c:forEach>
 
 </table>
 

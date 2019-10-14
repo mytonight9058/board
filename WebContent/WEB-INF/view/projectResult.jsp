@@ -35,14 +35,14 @@ table{
 		<td>프로젝트 내용</td>
 		
 
-		<td>${project.sdate }</td>
+		<td>${project.content }</td>
 
 	</tr>
 	
 	<tr>
 		<td>시작 날짜</td>
 		
-		<td>${project. }</td>
+		<td>${project.sdate }</td>
 
 	</tr>
 	
@@ -50,20 +50,20 @@ table{
 		
 		<td>종료 날짜</td>		
 
-		<td>${project. }</td>
+		<td>${project.ldate }</td>
 
 	</tr>
 	
 	<tr>	
 		<td>상태</td>
 		
-		<td>${project. }</td>
+		<td>${project.proceeding }</td>
 
 	</tr>
 
 </table>
 
-<a href = "update.do">수정</a>  <a href = "delete.do">삭제</a>  <a href = "list.do">돌아가기</a>
+<a href = "update.do?no=${project.no }">수정</a>  <a href = "delete.do?no=${project.no }">삭제</a>  <a href = "list.do">돌아가기</a>
  
 
 </body>

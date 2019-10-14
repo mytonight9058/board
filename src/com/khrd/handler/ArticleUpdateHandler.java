@@ -40,8 +40,6 @@ public class ArticleUpdateHandler implements CommandHandler {
 			}
 
 		}else if(request.getMethod().equalsIgnoreCase("post")) {
-			
-			request.setCharacterEncoding("utf-8");
 
 			Connection conn = null;
 			String No = request.getParameter("no");

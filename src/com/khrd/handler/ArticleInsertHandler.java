@@ -24,7 +24,6 @@ public class ArticleInsertHandler implements CommandHandler {
 			return "/WEB-INF/view/articleInsertForm.jsp";
 			
 		}else if(request.getMethod().equalsIgnoreCase("post")) {
-			request.setCharacterEncoding("utf-8");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 			
